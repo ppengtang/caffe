@@ -306,7 +306,7 @@ message ParamSpec {
 // NOTE
 // Update the next available ID when you add a new LayerParameter field.
 //
-// LayerParameter next available layer-specific ID: 151 (last added: box_annotator_ohem_param)
+// LayerParameter next available layer-specific ID: 152 (last added: spm_param)
 message LayerParameter {
   optional string name = 1; // the layer name
   optional string type = 2; // the layer type
@@ -401,6 +401,7 @@ message LayerParameter {
   optional SigmoidParameter sigmoid_param = 124;
   optional SmoothL1LossParameter smooth_l1_loss_param = 148;
   optional SoftmaxParameter softmax_param = 125;
+  optional SPMParameter spm_param = 151;
   optional SPPParameter spp_param = 132;
   optional SliceParameter slice_param = 126;
   optional TanHParameter tanh_param = 127;
@@ -1477,4 +1478,12 @@ message PReLUParameter {
   optional FillerParameter filler = 1;
   // Whether or not slope paramters are shared across channels.
   optional bool channel_shared = 2 [default = false];
+}
+
+message SPMParameter {
+  // SPM type
+  // 0: global
+  // 1: 1x1, 2x2, 3x1 (for PASCAL VOC)
+  // 2: 1x1, 2x2, 4x4
+  optional uint32 spm_type = 1 [default = 0];
 }

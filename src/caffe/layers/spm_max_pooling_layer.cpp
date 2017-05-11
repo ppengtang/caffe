@@ -148,7 +148,7 @@ void SPMMaxPoolingLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
     int batch_size = bottom[1]->num();
     int num_rois = bottom[2]->num();
     const int channels = bottom[0]->channels();
-    int* real_max_idx = max_idx_.mutable_cpu_data();
+    const int* real_max_idx = max_idx_.cpu_data();
     
     for (int i = 0; i < num_rois; i++) {
       for (int c = 0; c < channels; c++) {
